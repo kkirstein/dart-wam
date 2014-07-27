@@ -10,7 +10,7 @@ pubspec.lock
 # Avoid committing generated JavaScript files
 *.dart.js
 
-# Vin backup files
+# Vim backup files
 *.swp
 *~
 
