@@ -8,8 +8,7 @@ The goal of this project is to implement [Warren's Abstract Machine](http://en.w
 
 ## Basic Explanation
 
-### Chapter 1
+A summary of the implementation as described by the cited tutorial can be found on the respective [Wiki page](https://github.com/kkirstein/dart-wam/wiki/Summary).
 
-### Chapter xx
 
 
