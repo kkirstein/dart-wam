@@ -2,3 +2,5 @@ name: wam
 version: 0.0.1
 author: Kay-Uwe Kirstein
 description: Warren's Abstract Machine (WAM) in Dart. The WAM is used as a standard implementation for the Prolog programming language.
+dev_dependencies:
+  unittest: any
