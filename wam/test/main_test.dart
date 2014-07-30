@@ -25,6 +25,7 @@ void main() {
     test('FunctorCell', () {
       var fc = new FunctorCell(3);
       expect(fc.arity, equals(3));
+      expect(() {fc.arity = 2;}, throwsNoSuchMethodError);
     });    
   });
   
@@ -55,5 +56,9 @@ void main() {
       expect(heap.show(2), equals(fc));
       expect(heap.show(3), equals(vc));
     });
+  });
+  
+  group('Registers', () {
+    
   });
 }
