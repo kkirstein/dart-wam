@@ -1,11 +1,15 @@
 part of wam;
 
-
+/**
+ * abstact parent class for all heap cells
+ */
 abstract class HeapCell {
   
 }
 
-
+/**
+ * heap cell to contain a variable reference
+ */
 class VariableCell extends HeapCell {
   
   // public properties
@@ -21,6 +25,9 @@ class VariableCell extends HeapCell {
   }
 }
 
+/**
+ * heap cell contain a structure reference
+ */
 class StructureCell extends HeapCell {
   
   // public properties
@@ -36,6 +43,9 @@ class StructureCell extends HeapCell {
   }
 }
 
+/**
+ * heap cell to contain a functor head (with stored arity)
+ */
 class FunctorCell extends HeapCell {
   
   // public properties
