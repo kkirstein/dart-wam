@@ -6,29 +6,29 @@ part of wam;
 class Heap {
   
   // public properties
-  int get head => _head;
+  int get head => _next;
   
   // private properties
   List<HeapCell> _data;
-  int _head;
+  int _next;
   
   // constructor
   Heap() {
     _data = new List();
-    _head = 0;
+    _next = 0;
   }
   
   // public methods
   void add(HeapCell item) {
     _data.add(item);
-    _head++;
+    _next++;
   }
   
-  HeapCell show(int address) {
-    if (address > _head) {
-      throw "Trying to address unsed heap address";
-    } else {
+  HeapCell get(int address) {
+    if (address <= _next) {
       return _data[address-1];
+    } else {
+      throw "Trying to address unsed heap address";
     }
   }
 }

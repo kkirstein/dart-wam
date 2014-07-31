@@ -19,15 +19,25 @@ class Registers {
   
   // public methods
   void set(int index, HeapCell item) {
-    // TODO
+    if (index < _next) {
+      _regs[index] = item;
+    } else {
+      throw "Trying to address unsed register";
+    }
   }
   
-  void setNext(HeapCell item) {
-    // TODO
+  int setNext(HeapCell item) {
+    _regs.add(item);
+    _next++;
+    
+    return (_next-1); // shorter?: return _next++;
   }
   
   HeapCell get(index) {
-    // TODO
-    return null;
+    if (index < _next) {
+      return _regs[index];
+    } else {
+      throw "Trying to address unsed register";
+    }
   }
 }
