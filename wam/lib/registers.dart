@@ -28,9 +28,9 @@ class Registers {
   
   int setNext(HeapCell item) {
     _regs.add(item);
-    _next++;
-    
-    return (_next-1); // shorter?: return _next++;
+//    _next++;
+//    return (_next-1);
+    return _next++;
   }
   
   HeapCell get(index) {
@@ -40,4 +40,10 @@ class Registers {
       throw "Trying to address unsed register";
     }
   }
+  
+  String toString() {
+    // TODO
+    throw "Not yet implemented";
+  }
+
 }

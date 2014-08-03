@@ -31,4 +31,9 @@ class Heap {
       throw "Trying to address unsed heap address";
     }
   }
+  
+  String toString() {
+    // TODO
+    throw "Not yet implemented";
+  }
 }
