@@ -33,7 +33,9 @@ class Heap {
   }
   
   String toString() {
-    // TODO
-    throw "Not yet implemented";
+    var count = 0;
+    var result = _data.map((e) => ('${count++}:\t' + e.toString())).join('\n');
+
+    return result;
   }
 }

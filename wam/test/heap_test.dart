@@ -13,6 +13,7 @@ void main() {
       expect(vc.address, equals(11));
       vc.address = 13;
       expect(vc.address, equals(13));
+      expect(vc.toString(), equals('<REF,13>'));
     });
     
     test('StructureCell', () {
@@ -20,11 +21,13 @@ void main() {
       expect(sc.address, equals(11));
       sc.address = 13;
       expect(sc.address, equals(13));
+      expect(sc.toString(), equals('<STR,13>'));
     });
     
     test('FunctorCell', () {
-      var fc = new FunctorCell(3);
+      var fc = new FunctorCell('f', 3);
       expect(fc.arity, equals(3));
+      expect(fc.toString(), equals('f/3'));
       expect(() {fc.arity = 2;}, throwsNoSuchMethodError);
     });    
   });
@@ -46,7 +49,7 @@ void main() {
     test('Add2', () {
       var heap = new Heap();
       var sc = new StructureCell(heap.head+1);
-      var fc = new FunctorCell(1);
+      var fc = new FunctorCell('f', 1);
       var vc = new VariableCell(heap.head+2);
       heap.add(sc);
       heap.add(fc);
@@ -62,6 +65,38 @@ void main() {
       var vc = new VariableCell(heap.head);
       heap.add(vc);
       expect(() {heap.get(2);}, throwsA(new isInstanceOf('String')));
+    });
+    
+    test('ToString', () {
+      var heap = new Heap();
+      heap.add(new StructureCell(1));
+      heap.add(new FunctorCell('h', 2));
+      heap.add(new VariableCell(2));
+      heap.add(new VariableCell(3));
+      heap.add(new VariableCell(5));
+      heap.add(new FunctorCell('f', 1));
+      heap.add(new VariableCell(3));
+      heap.add(new StructureCell(8));
+      heap.add(new FunctorCell('p', 3));
+      heap.add(new VariableCell(2));
+      heap.add(new StructureCell(1));
+      heap.add(new StructureCell(5));
+      
+//      print(heap.toString());
+      var  expected = 
+          "0:\t<STR,1>\n"
+          "1:\th/2\n"
+          "2:\t<REF,2>\n"
+          "3:\t<REF,3>\n"
+          "4:\t<REF,5>\n"
+          "5:\tf/1\n"
+          "6:\t<REF,3>\n"
+          "7:\t<STR,8>\n"
+          "8:\tp/3\n"
+          "9:\t<REF,2>\n"
+          "10:\t<STR,1>\n"
+          "11:\t<STR,5>";
+      expect(heap.toString(), equals(expected));
     });
   });
   

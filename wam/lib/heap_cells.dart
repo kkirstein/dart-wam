@@ -21,7 +21,7 @@ class VariableCell extends HeapCell {
   
   // public methods
   String toString() {
-    return "<$ID, $address>";
+    return "<$ID,$address>";
   }
 }
 
@@ -39,7 +39,7 @@ class StructureCell extends HeapCell {
   
   // public methods
   String toString() {
-    return "<$ID, $address>";
+    return "<$ID,$address>";
   }
 }
 
@@ -49,17 +49,17 @@ class StructureCell extends HeapCell {
 class FunctorCell extends HeapCell {
   
   // public properties
-  String get ID => _ID + arity.toString();
+  String get ID => id + '/' + arity.toString();
   final int arity;
+  final String id;
   
   // private properties
-  static const String _ID = 'f/';
   
   // constructor
-  FunctorCell(this.arity) { }
+  FunctorCell(this.id, this.arity) { }
   
   // public methods
   String toString() {
-    return "$_ID/$arity";
+    return "$id/$arity";
   }
 }
