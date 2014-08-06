@@ -8,30 +8,35 @@ class Machine {
   Registers _regs;
   
   // constructor
-  // ...default...
+  Machine() {
+    _heap = new Heap();
+    _regs = new Registers();
+  }
   
   // public methods
-  void putStructure(StructureCell struct) {
+  void putStructure(String functorId, int arity, int regIndex) {
+    var sc = new StructureCell(_heap.head);
+    _heap.add(sc);
+    _heap.add(new FunctorCell(functorId, arity));
+    _regs.set(regIndex, sc);
+//    _regs.set(regIndex, functorId);
+  }
+  
+  void setVariable(int regIndex) {
     // TODO
   }
   
-  void setVariable(int index) {
-    // TODO
-  }
-  
-  void setValue(int index) {
+  void setValue(int regIndex) {
     // TODO
   }
   
   // public debugging methods
   String showHeap() {
-    // TODO
-    throw "Not yet implemented";
+    return _heap.toString();
   }
   
   String showRegisters() {
-    // TODO
-    throw "Not yet implemented";
+    return _regs.toString();
   }
   
 }

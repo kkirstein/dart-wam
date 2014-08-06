@@ -103,10 +103,10 @@ void main() {
   group('Registers', () {
     test('Empty', () {
       var regs = new Registers();
-      expect(regs.setNext(null), isZero);
+      expect(() {regs.get(0);}, throwsA(new isInstanceOf('String')));
     });
     
-    test('SetNext', () {
+    skip_test('SetNext', () {
       var regs = new Registers();
       var vc1 = new VariableCell(3);
       var vc2 = new VariableCell(4);
@@ -122,22 +122,22 @@ void main() {
       var regs = new Registers();
       var vc1 = new VariableCell(3);
       var vc2 = new VariableCell(4);
-      var r1 = regs.setNext(vc1);
-      var r2 = regs.setNext(vc2);
-      expect(regs.get(r1), equals(vc1));
-      expect(regs.get(r2), equals(vc2));
+      regs.set(0, vc1);
+      regs.set(1, vc2);
+      expect(regs.get(0), equals(vc1));
+      expect(regs.get(1), equals(vc2));
 
-      regs.set(r1, vc2);
-      regs.set(r2, vc1);
-      expect(regs.get(r1), equals(vc2));
-      expect(regs.get(r2), equals(vc1));
+      regs.set(0, vc2);
+      regs.set(1, vc1);
+      expect(regs.get(0), equals(vc2));
+      expect(regs.get(1), equals(vc1));
       
     });
     
     test('Error', () {
       var regs = new Registers();
       expect(() {regs.get(0);}, throwsA(new isInstanceOf('String')));
-      regs.setNext(new VariableCell(3));
+      regs.set(0, new VariableCell(3));
       expect(() {regs.get(0);}, returnsNormally);
       expect(() {regs.get(1);}, throwsA(new isInstanceOf('String')));
     });

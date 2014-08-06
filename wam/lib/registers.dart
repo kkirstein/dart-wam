@@ -9,7 +9,7 @@ class Registers {
   
   // private properties
   int _next;
-  List<HeapCell> _regs;
+  List<dynamic> _regs;
   
   // constructor
   Registers() {
@@ -18,23 +18,24 @@ class Registers {
   }
   
   // public methods
-  void set(int index, HeapCell item) {
-    if (index < _next) {
+  void set(int index, dynamic item) {
+    if (index >= _regs.length) {
+      // TODO: allocate additional registers
+      var newRegs = index-(_regs.length-1);
+      _regs.addAll(new List(newRegs));
       _regs[index] = item;
     } else {
-      throw "Trying to address unsed register";
+      _regs[index] = item;
     }
   }
   
-  int setNext(HeapCell item) {
-    _regs.add(item);
-//    _next++;
-//    return (_next-1);
-    return _next++;
-  }
+//  int setNext(dynamic item) {
+//    _regs.add(item);
+//    return _next++;
+//  }
   
-  HeapCell get(index) {
-    if (index < _next) {
+  dynamic get(index) {
+    if (index < _regs.length) {
       return _regs[index];
     } else {
       throw "Trying to address unsed register";
@@ -42,8 +43,10 @@ class Registers {
   }
   
   String toString() {
-    // TODO
-    throw "Not yet implemented";
+    var count = 0;
+    var result = _regs.map((e) => ('X${count++}:\t' + e.toString())).join('\n');
+
+    return result;
   }
 
 }
