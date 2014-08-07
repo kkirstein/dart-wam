@@ -103,6 +103,7 @@ void main() {
   group('Registers', () {
     test('Empty', () {
       var regs = new Registers();
+      expect(regs.capacity, isZero);
       expect(() {regs.get(0);}, throwsA(new isInstanceOf('String')));
     });
     
@@ -124,14 +125,22 @@ void main() {
       var vc2 = new VariableCell(4);
       regs.set(0, vc1);
       regs.set(1, vc2);
+      expect(regs.capacity, equals(2));
       expect(regs.get(0), equals(vc1));
       expect(regs.get(1), equals(vc2));
 
       regs.set(0, vc2);
       regs.set(1, vc1);
+      expect(regs.capacity, equals(2));
       expect(regs.get(0), equals(vc2));
       expect(regs.get(1), equals(vc1));
-      
+    });
+
+    test('Capacity', () {
+      var regs = new Registers();
+      expect(regs.capacity, isZero);
+      regs.set(1234, null);
+      expect(regs.capacity, equals(1235));
     });
     
     test('Error', () {

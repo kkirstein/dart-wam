@@ -6,6 +6,7 @@ part of wam;
 class Registers {
   
   // public properties
+  int get capacity => _regs.length;
   
   // private properties
   int _next;
