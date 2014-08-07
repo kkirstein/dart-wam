@@ -23,11 +23,14 @@ class Machine {
   }
   
   void setVariable(int regIndex) {
-    // TODO
+    var vc = new VariableCell(_heap.head);
+    _heap.add(vc);
+    _regs.set(regIndex, vc);
   }
   
   void setValue(int regIndex) {
-    // TODO
+    var item = _regs.get(regIndex);
+    _heap.add(item);
   }
   
   // public debugging methods

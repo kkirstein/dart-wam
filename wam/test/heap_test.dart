@@ -107,17 +107,17 @@ void main() {
       expect(() {regs.get(0);}, throwsA(new isInstanceOf('String')));
     });
     
-    skip_test('SetNext', () {
-      var regs = new Registers();
-      var vc1 = new VariableCell(3);
-      var vc2 = new VariableCell(4);
-      var r1 = regs.setNext(vc1);
-      var r2 = regs.setNext(vc2);
-      expect(r1, equals(0));
-      expect(r2, equals(1));
-      expect(regs.get(r1), equals(vc1));
-      expect(regs.get(r2), equals(vc2));
-    });
+//    skip_test('SetNext', () {
+//      var regs = new Registers();
+//      var vc1 = new VariableCell(3);
+//      var vc2 = new VariableCell(4);
+//      var r1 = regs.setNext(vc1);
+//      var r2 = regs.setNext(vc2);
+//      expect(r1, equals(0));
+//      expect(r2, equals(1));
+//      expect(regs.get(r1), equals(vc1));
+//      expect(regs.get(r2), equals(vc2));
+//    });
     
     test('Set_Get', () {
       var regs = new Registers();
